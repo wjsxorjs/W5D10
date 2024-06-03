@@ -6,6 +6,21 @@
 <head>
 <meta charset="UTF-8">
 <title>emp.jsp</title>
+<style>
+	#table{
+		width: 600px;
+		border-collapse: collapse;
+	}
+	
+	#table th, #table td{
+		border: 1px solid #ccc;
+		padding: 4px;
+	}
+	
+	#table caption{
+		text-indent: -9999px;
+	}
+</style>
 </head>
 <body>
 	<div id="wrap">
@@ -13,6 +28,8 @@
 				<h1>사원 목록</h1>
 		</header>
 		<article>
+			<input type="text" id="search"/>
+			<button onclick="exe()" type="button">검색</button>
 			<table id="table">
 				<caption>사원 목록 테이블</caption>
 				<thead>
@@ -32,10 +49,10 @@
 						for(EmpVO evo: e_ar){
 				%>
 						<tr>
-							<tr><%=evo.getEmpno() %> </tr>
-							<tr><%=evo.getEname() %> </tr>
-							<tr><%=evo.getJob() %>	 </tr>
-							<tr><%=evo.getDeptno() %></tr>
+							<td><%=evo.getEmpno() %> </td>
+							<td><%=evo.getEname() %> </td>
+							<td><%=evo.getJob() %>	 </td>
+							<td><%=evo.getDeptno() %></td>
 						</tr>
 				<%
 						}
@@ -46,5 +63,18 @@
 		</article>
 	</div>
 	<hr/>
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+	<script>
+		function exe(){
+			$.ajax({
+				url: "/Ex20240603_MVC/src/main/java/test/action/EmpAction",
+				type: "POST",
+				data: $("#search").val(),
+			}).done(function(res){
+				alert();
+				
+			});
+		}
+	</script>
 </body>
 </html>

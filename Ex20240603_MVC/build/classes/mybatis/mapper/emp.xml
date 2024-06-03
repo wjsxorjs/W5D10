@@ -10,6 +10,7 @@
 	FROM emp
 </select>
 
+
 <!-- 검색: 동적쿼리 (어떤 컬럼에 어떤 자원으로 검색을 할 것인가) -->
 <select id="search" parameterType="Map" resultType="mybatis.vo.EmpVO">
 	SELECT *
@@ -29,6 +30,5 @@
 		</choose>
 	</where>
 </select>
-
 
 </mapper>
